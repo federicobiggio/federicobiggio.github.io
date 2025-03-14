@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WiredViz</title>
+    <!-- Includi la libreria Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="#">WiredViz</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#textanalysis">Text Analysis</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#coloranalysis">Color</a>
+                </li>
+                
+            </ul>
+        </div>
+    </nav>
+    
+
+    <!-- Contenuto 1 -->
+    <div class="container mt-4" ">
+        <br>
+        <br>
+    </div>
+    <!-- slideshow -->
+    <div class=" container mt-4">
+        <div class="col-md-12" id="slideshow">
+        </div>
+    </div>
+
+    <!-- navigation bar -->
+    <div class="container mt-4" id="nav-bar">
+        <span class="arrow-icon" id="left-arrow">&#9664;</span> <!-- Freccia sinistra -->
+
+        <div id="info-cover">
+            <p id="month-year-info"></p>
+        </div>
+
+        <span class="arrow-icon" id="right-arrow">&#9654;</span> <!-- Freccia destra -->
+    </div>
+
+
+
+    <!-- cover highligh -->
+    <div class="container mt-4" id="description">
+        <div class="row">
+            <div class="col-md-4" style="background-color: #e9ecef;" id="cover-left">
+                <!-- Prima colonna (35%) -->
+            </div>
+
+            <div class="col-md-8" style="background-color: #e9ecef;">
+                <div class="border p-3" id="cover-right">
+                    <!-- Contenuto della div con bordo -->
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="container mt-4" id="textanalysis">
+        <br>
+        <br>        
+        <br>
+        <h1>Text Analysis</h1>
+        <p></p>
+    </div>
+    <div class="container mt-4">
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+            <!-- Contenuto del primo div -->
+            <h2>Keywords Timeline</h2>
+            
+            <div class="container mt-4" style="background-color: aqua; max-width: 100%;" id="k-timeline">
+
+            </div>
+            
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Select a word
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Voce 1</a>
+                  <a class="dropdown-item" href="#">Voce 2</a>
+                  <a class="dropdown-item" href="#">Voce 3</a>
+                </div>
+              </div>
+          </div>
+          <div class="col-md-6">
+            <!-- Contenuto del secondo div -->
+            <h2>Keywords Correlations</h2>
+            <p></p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="container mt-4" id="coloranalysis">
+        <br>
+        <br>        
+        <br>
+        <h1>Colors</h1>
+        <p></p>
+    </div>
+    
+    <!-- HSB visualization -->
+<div class="container mt-4">
+    <p>color / saturation rapport</p>
+    <div class="col-md-12">
+        <img src="/pf/wiredviz/colore x saturazione.png" alt="Your Image" class="img-fluid">
+    </div>
+</div>
+
+<div class="container mt-4">
+    <p>color / brightness rapport</p>
+    <div class="col-md-12">
+        <img src="/pf/wiredviz/colore x luminosità.png" alt="Your Image" class="img-fluid">
+    </div>
+</div>
+
+<div class="container mt-4">
+    <p>color-stdev / brightness rapport</p>
+    <div class="col-md-12">
+        <img src="/pf/wiredviz/hue_stdev x brightness.png" alt="Your Image" class="img-fluid">
+    </div>
+</div>
+
+<div class="container mt-4">
+    <p>brightness / saturation rapport</p>
+    <div class="col-md-12">
+        <img src="/pf/wiredviz/brightness x saturation.png" alt="Your Image" class="img-fluid">
+    </div>
+</div>
+
+<div class="container mt-4">
+    <p>color / year rapport</p>
+    <div class="col-md-12">
+        <img src="/pf/wiredviz/colore-anno.png" alt="Your Image" class="img-fluid">
+    </div>
+</div>
+
+<div class="container mt-4">
+    <p>brighness / year rapport</p>
+    <div class="col-md-12">
+        <img src="/pf/wiredviz/luminosità x anno.png" alt="Your Image" class="img-fluid">
+    </div>
+</div>
+
+<div class="container mt-4">
+    <p>saturation / year rapport</p>
+    <div class="col-md-12">
+        <img src="/pf/wiredviz/luminosità x anno.png" alt="Your Image" class="img-fluid">
+    </div>
+</div>
+   
+
+
+
+
+    <!-- Includi il tuo script JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
