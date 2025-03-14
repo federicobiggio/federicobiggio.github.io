@@ -9,34 +9,53 @@ $(document).ready(function () {
 
     // Function to load CSV file and images
     function loadImages() {
-        $.get(baseUrl + "wired_data.csv", function (data) {
-            var lines = data.split("\n");
+        console.log("Starting to load CSV from:", baseUrl + "wired_data.csv");
+        
+        $.ajax({
+            url: baseUrl + "wired_data.csv",
+            dataType: "text",
+            success: function(data) {
+                console.log("CSV loaded successfully");
+                var lines = data.split("\n");
+                console.log("Number of lines in CSV:", lines.length);
 
-            // Parse the CSV file
-            for (var i = 1; i < lines.length; i++) {
-                var parts = lines[i].split(";");
-                if (parts.length >= 2) {
-                    var imageName = parts[1].trim();
-                    var wordsContent = parts[5].trim();
-
-                    images.push({
-                        filename: parts[1],
-                        year: parts[2],
-                        month: parts[3],
-                        words: wordsContent
-                    });
+                // Parse the CSV file
+                for (var i = 1; i < lines.length; i++) {
+                    var parts = lines[i].split(";");
+                    if (parts.length >= 2) {
+                        var imageName = parts[1].trim();
+                        var wordsContent = parts[5] ? parts[5].trim() : "";
+                        
+                        console.log("Processing image:", imageName);
+                        
+                        images.push({
+                            filename: imageName,
+                            year: parts[2],
+                            month: parts[3],
+                            words: wordsContent
+                        });
+                    }
                 }
-            }
 
-            // Add images to the slideshow container
-            for (var i = 0; i < images.length; i++) {
-                var imageElement = $("<div class='slide-image'><img src='" + baseUrl + "wired_cover/" + images[i].filename + "'></div>");
-                slideshow.append(imageElement);
-            }
+                console.log("Total images processed:", images.length);
 
-            // Display a random image in the cover-left
-            showRandomImage();
-            showWordsForCurrentImage();
+                // Add images to the slideshow container
+                for (var i = 0; i < images.length; i++) {
+                    var imageUrl = baseUrl + "wired_cover/" + images[i].filename;
+                    console.log("Adding image to slideshow:", imageUrl);
+                    
+                    var imageElement = $("<div class='slide-image'><img src='" + imageUrl + "' onerror='console.log(\"Error loading image: \" + this.src)'></div>");
+                    slideshow.append(imageElement);
+                }
+
+                // Display a random image in the cover-left
+                showRandomImage();
+                showWordsForCurrentImage();
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error("Error loading CSV:", textStatus, errorThrown);
+                console.log("Response:", jqXHR.responseText);
+            }
         });
     }
 
