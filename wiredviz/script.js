@@ -5,10 +5,11 @@ $(document).ready(function () {
     var images = [];
     var currentIndex = -1;
     var pauseSlideshow = false;
+    var baseUrl = "https://raw.githubusercontent.com/federicobiggio/federicobiggio.github.io/main/wiredviz/";
 
     // Function to load CSV file and images
     function loadImages() {
-        $.get("wired_data.csv", function (data) {
+        $.get(baseUrl + "wired_data.csv", function (data) {
             var lines = data.split("\n");
 
             // Parse the CSV file
@@ -29,7 +30,7 @@ $(document).ready(function () {
 
             // Add images to the slideshow container
             for (var i = 0; i < images.length; i++) {
-                var imageElement = $("<div class='slide-image'><img src='wired_cover_crop/" + images[i].filename + "'></div>");
+                var imageElement = $("<div class='slide-image'><img src='" + baseUrl + "wired_cover/" + images[i].filename + "'></div>");
                 slideshow.append(imageElement);
             }
 
@@ -72,7 +73,7 @@ $(document).ready(function () {
             var currentImage = images[currentIndex];
 
             // Display the image in the cover-left
-            var imageSrc = "wired_cover_crop/" + currentImage.filename;
+            var imageSrc = baseUrl + "wired_cover/" + currentImage.filename;
             coverLeft.empty().append("<img src='" + imageSrc + "' style='width: 100%;'>");
 
             // Display the month and year
@@ -94,7 +95,7 @@ $(document).ready(function () {
             var randomIndex = Math.floor(Math.random() * images.length);
             currentIndex = randomIndex;
             var randomImage = images[randomIndex].filename;
-            var imageSrc = "wired_cover_crop/" + randomImage;
+            var imageSrc = baseUrl + "wired_cover/" + randomImage;
 
             coverLeft.empty().append("<img src='" + imageSrc + "' style='width: 100%;'>");
 
