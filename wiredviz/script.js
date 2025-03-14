@@ -41,10 +41,10 @@ $(document).ready(function () {
 
                 // Add images to the slideshow container
                 for (var i = 0; i < images.length; i++) {
-                    var imageUrl = baseUrl + "wired_cover/" + images[i].filename;
+                    var imageUrl = baseUrl + "wired_cover/" + encodeURIComponent(images[i].filename);
                     console.log("Adding image to slideshow:", imageUrl);
                     
-                    var imageElement = $("<div class='slide-image'><img src='" + imageUrl + "' onerror='console.log(\"Error loading image: \" + this.src)'></div>");
+                    var imageElement = $("<div class='slide-image'><img src='" + imageUrl + "' onerror='console.log(\"Error loading image: \" + this.src)' style='width: 5px;'></div>");
                     slideshow.append(imageElement);
                 }
 
@@ -92,7 +92,7 @@ $(document).ready(function () {
             var currentImage = images[currentIndex];
 
             // Display the image in the cover-left
-            var imageSrc = baseUrl + "wired_cover/" + currentImage.filename;
+            var imageSrc = baseUrl + "wired_cover/" + encodeURIComponent(currentImage.filename);
             coverLeft.empty().append("<img src='" + imageSrc + "' style='width: 100%;'>");
 
             // Display the month and year
@@ -104,7 +104,7 @@ $(document).ready(function () {
 
             // Display the content of the "words" column in the cover-right
             var wordsContent = currentImage.words;
-            $("#cover-right").text(wordsContent);
+            $("#cover-right").html("<h3>" + wordsContent + "</h3>");
         }
     }
 
@@ -114,7 +114,7 @@ $(document).ready(function () {
             var randomIndex = Math.floor(Math.random() * images.length);
             currentIndex = randomIndex;
             var randomImage = images[randomIndex].filename;
-            var imageSrc = baseUrl + "wired_cover/" + randomImage;
+            var imageSrc = baseUrl + "wired_cover/" + encodeURIComponent(randomImage);
 
             coverLeft.empty().append("<img src='" + imageSrc + "' style='width: 100%;'>");
 
@@ -124,10 +124,8 @@ $(document).ready(function () {
             infoCover.find("#month-year-info").text(monthYear);
 
             // Display the content of the "words" column in the cover-right
-            var wordsContent = currentImage.words;
-            $("#cover-right").text(wordsContent);
+            showWordsForCurrentImage();
         }
-        showWordsForCurrentImage();
     }
 
     // Event handler for clicking on a slide image
